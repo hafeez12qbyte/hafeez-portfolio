@@ -16,8 +16,8 @@ export const U = {
 export const PRESETS = {
   morning: { skyEl: 30, el: 32, az: 130, sunI: 3.0, sunC: '#fff1dc', hemiS: '#cfe0ff', hemiG: '#5a6a4a', hemiI: 0.5, envI: 0.75,
     turb: 2.6, ray: 1.1, mie: 0.0035, mieG: 0.8, fogC: '#bccde2', fogD: 0.0024, exp: 0.62, night: 0, cloudLit: '#ffffff', cloudShade: '#b9c3d1', cloudA: 0.7 },
-  golden:  { skyEl: 5, el: 9, az: 250, sunI: 3.4, sunC: '#ffb066', hemiS: '#f2c9a3', hemiG: '#4a3c2e', hemiI: 0.42, envI: 0.62,
-    turb: 3.4, ray: 2.0, mie: 0.007, mieG: 0.86, fogC: '#dcae88', fogD: 0.0028, exp: 0.72, night: 0, cloudLit: '#ffd2a6', cloudShade: '#9a8a8c', cloudA: 0.68 },
+  golden:  { skyEl: 5, el: 9, az: 250, sunI: 3.9, sunC: '#ffb066', hemiS: '#f2c9a3', hemiG: '#4a3c2e', hemiI: 0.52, envI: 0.78,
+    turb: 4.2, ray: 2.6, mie: 0.007, mieG: 0.86, fogC: '#dcae88', fogD: 0.0028, exp: 0.86, night: 0, cloudLit: '#ffd2a6', cloudShade: '#9a8a8c', cloudA: 0.68 },
   night:   { skyEl: -14, el: 42, az: 205, sunI: 0.14, sunC: '#a8bcff', hemiS: '#22324f', hemiG: '#07090d', hemiI: 0.28, envI: 0.16,
     turb: 2.0, ray: 0.6, mie: 0.002, mieG: 0.8, fogC: '#0b1322', fogD: 0.005, exp: 1.0, night: 1, cloudLit: '#3a4660', cloudShade: '#141b29', cloudA: 0.42 },
 };

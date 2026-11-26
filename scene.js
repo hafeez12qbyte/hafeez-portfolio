@@ -78,13 +78,13 @@ function facadeTex(shop) {
         g.strokeStyle = 'rgba(0,0,0,.35)'; g.lineWidth = 3; g.strokeRect(xm(c) - 24, ym(rowY) - 31, 48, 62);
       }
     }
-    // sign band 2.95..4.0 m
-    g.fillStyle = shop.accent; g.fillRect(0, ym(4.0), w, ym(2.95) - ym(4.0));
+    // sign band 2.9..4.15 m
+    g.fillStyle = shop.accent; g.fillRect(0, ym(4.15), w, ym(2.9) - ym(4.15));
     g.fillStyle = 'rgba(255,255,255,.94)'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    let fs = 44; g.font = `700 ${fs}px system-ui, sans-serif`;
+    let fs = 54; g.font = `700 ${fs}px system-ui, sans-serif`;
     while (g.measureText(shop.name).width > w - 56 && fs > 20) { fs -= 3; g.font = `700 ${fs}px system-ui, sans-serif`; }
-    g.fillText(shop.name, w / 2, ym(3.62));
-    g.font = '600 17px system-ui, sans-serif'; g.fillStyle = 'rgba(255,255,255,.85)';
+    g.fillText(shop.name, w / 2, ym(3.74));
+    g.font = '600 18px system-ui, sans-serif'; g.fillStyle = 'rgba(255,255,255,.85)';
     g.fillText(shop.sub.split('').join('  '), w / 2, ym(3.14));
     // storefront glass 0.25..2.8 m with mullions and a door
     g.fillStyle = '#171d24'; g.fillRect(xm(-5.0), ym(2.8), xm(5.0) - xm(-5.0), ym(0.25) - ym(2.8));
@@ -201,7 +201,7 @@ export function buildScene() {
     const s = shop.side;                                   // -1 west, +1 east
     const frontX = s * WALK;
     const cx = s * (WALK + DEPTH / 2);
-    const bodyMat = new THREE.MeshStandardMaterial({ color: new THREE.Color(shop.base).multiplyScalar(0.82), roughness: 0.9 });
+    const bodyMat = new THREE.MeshStandardMaterial({ color: new THREE.Color(shop.base).multiplyScalar(0.94), roughness: 0.9 });
     box(DEPTH, shop.h, WIDTH, bodyMat, cx, Y0 + shop.h / 2, shop.z, group);
     const facade = new THREE.Mesh(new THREE.PlaneGeometry(WIDTH, shop.h),
       new THREE.MeshStandardMaterial({ map: facadeTex(shop), roughness: 0.85 }));
