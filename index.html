@@ -32,7 +32,7 @@
     /* ---------- hero / 3D scene ---------- */
     .hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; background: linear-gradient(180deg, #1a2a3d 0%, #3d4a3a 55%, #141a13 100%); }
     canvas#gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; touch-action: none; }
-    .scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(5, 8, 6, .42) 0%, transparent 26%, transparent 52%, rgba(5, 8, 6, .66) 100%); }
+    .scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(5, 8, 6, .48) 0%, rgba(5, 8, 6, .10) 30%, rgba(5, 8, 6, .20) 55%, rgba(5, 8, 6, .80) 100%); }
     .topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 20px clamp(18px, 4vw, 44px); }
     .logo { font-family: Fraunces, serif; font-size: 21px; font-weight: 650; letter-spacing: .01em; text-decoration: none; }
     .logo span { color: var(--gold); }
@@ -57,6 +57,16 @@
     .scene-note { position: absolute; z-index: 4; top: 86px; left: clamp(18px, 4vw, 44px); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: rgba(242, 239, 230, .85); background: rgba(10, 13, 11, .45); border: 1px solid rgba(242, 239, 230, .16); padding: 7px 12px; border-radius: 999px; backdrop-filter: blur(8px); }
     .scene-note b { color: var(--gold); font-weight: 800; }
     @media (max-width: 640px) { .scene-note { display: none; } .hero-copy { bottom: 132px; } }
+    @media (max-height: 800px) {
+      .scene-note { display: none; }
+      .hero-copy { bottom: 92px; }
+      .hero-copy h1 { font-size: clamp(30px, 4.6vw, 46px); }
+      .hero-copy p.sub { margin: 12px 0 18px; }
+    }
+    .portrait { margin: 0 0 14px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); position: relative; background: var(--surface); }
+    .portrait img { width: 100%; height: 350px; object-fit: cover; object-position: center 18%; display: block; }
+    .portrait figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(10, 13, 11, .74); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+    .portrait figcaption span { color: var(--gold); }
     .bar { position: absolute; z-index: 5; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(13, 16, 14, .58); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 0 0 1px rgba(255, 255, 255, .1); }
     .bar button { appearance: none; border: 0; border-radius: 999px; padding: 9px 15px; min-height: 40px; font: 600 13px/1 Manrope, system-ui, sans-serif; color: var(--ink); background: transparent; cursor: pointer; white-space: nowrap; }
     .bar button[aria-pressed="true"] { background: rgba(255, 255, 255, .17); }
@@ -284,11 +294,17 @@
             <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>JavaScript</span><span>FastAPI</span><span>PostgreSQL</span><span>three.js</span>
           </div>
         </div>
-        <div class="stats rv">
+        <div class="rv">
+          <figure class="portrait">
+            <img src="hafeez.jpg" alt="Hafeez Shoukat, web developer">
+            <figcaption>Hafeez Shoukat <span>· Lahore, Pakistan</span></figcaption>
+          </figure>
+          <div class="stats">
           <div class="stat"><div class="n">8</div><div class="l">Live projects on the web</div></div>
           <div class="stat"><div class="n">1</div><div class="l">SaaS product in production</div></div>
           <div class="stat"><div class="n">2</div><div class="l">Fixed-price Upwork services</div></div>
           <div class="stat"><div class="n">100%</div><div class="l">Built and deployed by me</div></div>
+          </div>
         </div>
       </div>
       <div class="steps">
@@ -337,7 +353,7 @@
         var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
         var coarse = matchMedia('(pointer: coarse)').matches;
         if (coarse) c.enableRotate = false;              // keep page scroll natural on touch screens
-        if (!reduced) { c.autoRotate = true; c.autoRotateSpeed = 0.5; }
+        if (!reduced) { c.autoRotate = true; c.autoRotateSpeed = 0.35; }
         document.getElementById('gl').addEventListener('pointerdown', function () { c.autoRotate = false; }, { once: true });
       } else if (tries > 75) {
         clearInterval(iv);
