@@ -39,7 +39,7 @@ const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true; controls.dampingFactor = 0.07;
 controls.maxPolarAngle = 1.52; controls.minDistance = 3; controls.maxDistance = 140;
 camera.fov = fitFov(camera.aspect); camera.updateProjectionMatrix();
-const startView = VANTAGE[params.get('view')] || VANTAGE.corner;
+const startView = VANTAGE[params.get('view')] || VANTAGE.front;
 camera.position.set(...startView.pos); controls.target.set(...startView.tgt); controls.update();
 
 const env = createEnvironment(renderer, scene, { preset: params.get('light') || 'golden', scale: 120 });
