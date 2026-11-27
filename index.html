@@ -350,26 +350,11 @@
         clearInterval(iv);
         var c = window.__app.controls;
         c.enableZoom = false; c.enablePan = false;
-        var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
         var coarse = matchMedia('(pointer: coarse)').matches;
         if (coarse) c.enableRotate = false;              // keep page scroll natural on touch screens
-        if (!reduced) {
-          // Gentle sway instead of a full orbit: a 360° swing passes behind the studio
-          // building and a rooftop fills the frame. Sway ±26° around the start azimuth.
-          var cam = window.__app.camera, tgt = c.target, userDriven = false;
-          document.getElementById('gl').addEventListener('pointerdown', function () { userDriven = true; }, { once: true });
-          document.querySelectorAll('[data-view]').forEach(function (b) { b.addEventListener('click', function () { userDriven = true; }); });
-          var off = { x: cam.position.x - tgt.x, z: cam.position.z - tgt.z };
-          var baseAz = Math.atan2(off.x, off.z), radius = Math.hypot(off.x, off.z), t0 = performance.now();
-          (function sway() {
-            if (!userDriven && !document.hidden) {
-              var az = baseAz + Math.sin((performance.now() - t0) / 16000 * Math.PI * 2) * 0.45;
-              cam.position.x = tgt.x + Math.sin(az) * radius;
-              cam.position.z = tgt.z + Math.cos(az) * radius;
-            }
-            requestAnimationFrame(sway);
-          })();
-        }
+        // The camera stays fixed at the framed default view (motion comes from the trees,
+        // clouds and light presets). Any automatic orbiting swung the camera behind
+        // buildings and lost the street, so there is deliberately none.
       } else if (tries > 75) {
         clearInterval(iv);
         var l = document.getElementById('loader');       // scene failed to load: never trap the visitor

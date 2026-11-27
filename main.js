@@ -17,10 +17,10 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // named vantages: camera position + look-at target. Every still and every flight uses these.
 export const VANTAGE = {
-  front:  { pos: [0, 2.4, 36], tgt: [0, 5, -10] },
-  corner: { pos: [21, 10, 24], tgt: [0, 3.5, 0] },
-  low:    { pos: [-2.6, 1.5, 18], tgt: [4, 5, -8] },
-  aerial: { pos: [26, 34, 38], tgt: [0, 2, 0] },
+  front:  { pos: [0, 2.8, 35], tgt: [0, 5, -12] },
+  corner: { pos: [23, 8.5, -10], tgt: [0, 3.5, 2] },
+  low:    { pos: [-2.4, 1.5, 14], tgt: [5, 4.5, -6] },
+  aerial: { pos: [24, 32, 36], tgt: [0, 2, 0] },
 };
 
 const canvas = document.getElementById('gl');
